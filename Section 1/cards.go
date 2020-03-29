@@ -1,4 +1,4 @@
-package main // is now an executable type package
+package Section_1 // is now an executable type package
 import "fmt"
 
 // Auto called from executable

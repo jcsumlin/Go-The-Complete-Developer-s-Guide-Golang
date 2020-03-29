@@ -1,6 +1,9 @@
-package main
+package Section_1
 
-import "testing"
+import (
+	"os"
+	"testing"
+)
 
 // all tests have to have _test at the end the name
 // "go test" will run the tests
@@ -16,4 +19,21 @@ func TestNewDeck(t *testing.T) {
 	if d[len(d)-1] != "King of Clubs" {
 		t.Errorf("Deck is out of order. Expected last card of King of Clubs, got: %v", d[len(d)-1])
 	}
+}
+
+func TestSaveToDeckAndNewDeckFromFile(t *testing.T)  {
+	os.Remove("_decktesting")
+
+
+	deck := newDeck()
+	deck.saveToFile("_decktesting")
+
+	loadedDeck :=newDeckFromFile("_decktesting")
+
+	if len(loadedDeck) != 62 {
+		t.Errorf("Expected 52 cards but got %v", len(loadedDeck))
+	}
+
+
+	os.Remove("_decktesting")
 }

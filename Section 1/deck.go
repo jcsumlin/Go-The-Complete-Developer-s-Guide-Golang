@@ -1,4 +1,4 @@
-package main
+package Section_1
 
 import (
 	"fmt"
