@@ -35,15 +35,26 @@ func main() {
 	fmt.Println(alex)
 	fmt.Println(bob)
 	fmt.Println(chat)
-	fmt.Printf("%+v", chat)
+	//fmt.Printf("%+v", chat)
 
 	chat.firstName = "Chat"
 	chat.lastName = "Sumlin"
 
 	//chat.print()
-
-	chat.updateName("John")
+	// by default Go will be working on a copy of any data that we pass into a function
+	// & is an operator in Go. &var will give the memory address of the variable referenced.
+	// Rather than reference the struct directly we can point to the memory address to make sure that the correct struct is updated
+	// chatPointer is now a memory address or pointer
+	chatPointer := &chat
+	chatPointer.updateName("John")
 	chat.print()
+
+	// You can actually just call this instead of creating a pointer like the above chatPointer := &chat
+	chat.updateName("Chatfield")
+	chat.print()
+	// a receiver with a type of a pointer Go can coax the memory address form the struct we are operating on
+
+	//Pointers are not necessary with arrays.
 }
 
 // another receiver function
@@ -51,6 +62,9 @@ func (p person) print() {
 	fmt.Printf("%+v", p)
 }
 
-func (p person) updateName(newFirstName string) {
-	p.firstName = newFirstName
+// *var: give me the value of whats being pointed to in Memory
+// *person: a type of pointer that points to a person
+// star in front of a type is different from a star in front of a var
+func (pointerToPerson *person) updateName(newFirstName string) {
+	(*pointerToPerson).firstName = newFirstName
 }
