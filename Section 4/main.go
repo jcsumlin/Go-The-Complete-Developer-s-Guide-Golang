@@ -54,7 +54,13 @@ func main() {
 	chat.print()
 	// a receiver with a type of a pointer Go can coax the memory address form the struct we are operating on
 
-	//Pointers are not necessary with arrays.
+	// Value Types: Use pointers to change these things in a function
+	// Int, Float, String, Bool, Struct
+
+	// Reference Type: Dont need to use pointers with these
+	// slices, maps,channels, pointers, functions
+
+	//Annotation 2020-04-02 101730.png
 }
 
 // another receiver function
